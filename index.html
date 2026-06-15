@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Advice generator app</title>
+<link rel="stylesheet" href="./index.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 0.6875rem; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  Advice #<!-- Advice ID goes here -->
+<div class="advice-root">
+  <div class="card" id="card">
+    <p class="advice-label" id="label">ADVICE #1</p>
+    <p class="advice-text" id="text">"It is easy to sit up and take notice, what's difficult is getting up and taking action."</p>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="divider-line"></div>
+    </div>
+    <button class="dice-btn" id="diceBtn" aria-label="Get new advice">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="4" fill="hsl(217,19%,24%)"/>
+        <circle cx="7" cy="7" r="1.5" fill="hsl(217,19%,24%)" stroke="hsl(217,19%,24%)"/>
+        <circle cx="7" cy="7" r="1.5" fill="hsl(150,100%,66%)"/>
+        <circle cx="17" cy="7" r="1.5" fill="hsl(150,100%,66%)"/>
+        <circle cx="7" cy="17" r="1.5" fill="hsl(150,100%,66%)"/>
+        <circle cx="17" cy="17" r="1.5" fill="hsl(150,100%,66%)"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(async () => {
+  const labelEl = document.getElementById('label');
+  const textEl = document.getElementById('text');
+  const btn = document.getElementById('diceBtn');
+  const card = document.getElementById('card');
+
+  async function fetchAdvice() {
+    btn.disabled = true;
+    card.classList.add('loading');
+    try {
+      const res = await fetch('https://api.adviceslip.com/advice', { cache: 'no-cache' });
+      const data = await res.json();
+      const slip = data.slip;
+      labelEl.textContent = `ADVICE #${slip.id}`;
+      textEl.textContent = `"${slip.advice}"`;
+    } catch(e) {
+      textEl.textContent = '"Could not load advice. Please try again."';
+    }
+    card.classList.remove('loading');
+    btn.disabled = false;
+  }
+
+  btn.addEventListener('click', fetchAdvice);
+  fetchAdvice();
+})();
+</script>
+
+  
+  
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">rotjing shirtong</a>.
+  </footer>
+</body>
+</html>

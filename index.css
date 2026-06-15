@@ -1,0 +1,92 @@
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+  .advice-root {
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: hsl(218, 23%, 16%);
+    border-radius: 16px;
+    padding: 2rem 1rem 4rem;
+    box-sizing: border-box;
+  }
+  .card {
+    background: hsl(217, 19%, 24%);
+    border-radius: 16px;
+    padding: 2.5rem 2rem 3.5rem;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+  }
+  .advice-label {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: hsl(150, 100%, 66%);
+    margin-bottom: 1.5rem;
+  }
+  .advice-text {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: clamp(20px, 4vw, 28px);
+    color: hsl(193, 38%, 86%);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: hsl(217, 19%, 38%);
+  }
+  .divider-dots {
+    display: flex;
+    gap: 4px;
+  }
+  .dot {
+    width: 6px;
+    height: 16px;
+    background: hsl(217, 19%, 38%);
+    border-radius: 3px;
+  }
+  .dice-btn {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: hsl(150, 100%, 66%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s, background 0.2s;
+    outline: none;
+  }
+  .dice-btn:hover {
+    box-shadow: 0 0 0 16px hsla(150, 100%, 66%, 0.18);
+  }
+  .dice-btn:active {
+    background: hsl(150, 100%, 58%);
+  }
+  .dice-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  .loading {
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  @media (max-width: 480px) {
+    .card { padding: 2rem 1.25rem 3.5rem; }
+  }
